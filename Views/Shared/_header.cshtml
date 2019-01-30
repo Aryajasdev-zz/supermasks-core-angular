@@ -1,0 +1,66 @@
+﻿<div id="venetiansite">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="btn-group btn-group-lg  pull-right visible-xs">
+                    <button type="button" class="btn btn-default mobile-menu" rel="search"><span class="fa fa-search fa-2x"></span></button>
+                    <button type="button" class="btn btn-default mobile-menu" rel="login" onclick="showlogin()"><span class="fa fa-user-circle-o fa-2x"></span></button>
+                    <button class="btn btn-default mobile-menu" onClick="showcart();" return false;">
+                        <span class="label label-success crtqtytop" style="position: absolute;right: 0;top: 0;">0</span>
+                        <i class="fa fa-shopping-cart  fa-2x"></i>
+                    </button>
+                    <button type="button" class="btn btn-default mobile-menu" rel="menulist">
+                        <span class="fa fa-list fa-2x"></span>
+                    </button>
+                </div>
+                <a class="navbar-brand hidden-xs" href="/"><i class="fa fa-home hidden-xs"></i><b> SuperMasks.co.uk</b></a>
+                <a class="navbar-brand visible-xs" href="/"><i class="fa fa-home hidden-xs"></i><b> SuperMasks</b></a>
+                <!-- new panels for mobile only -->
+                <div class="visible-xs">
+                    <div class="navbar-mobile-menu hidden animated" id="menulist" style="overflow-y: scroll;">
+                        <!-- megamenu carousel end -->
+                    </div>
+                    <div class="navbar-mobile-menu" id="search">
+                        <div class="searchwidget_mob">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2" ng-controller="mainController">
+                <form class="navbar-form navbar-left" action="/search/s" role="search" method="get">
+                    <div class="form-group">
+                        <input name="n" type="text" class="form-control" placeholder="Search the site" />
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="info">
+                        <a href="#" rel="nofollow" class="nofinger btn btn-default">
+                            <i class="fa fa-phone text-success"></i> 020 3457 3245
+                        </a>
+                    </li>
+                    <li class="info">
+                        <a href="#login" ng-click="showlogin()" rel="nofollow" class="nofinger btn btn-default">
+                            <i class="fa fa-user-circle-o"></i>&nbsp;<span>{{custname}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#cart" rel="nofollow" class="btn btn-default" onClick="showcart();">
+                            <ngcart-summary class=""></ngcart-summary>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/checkout/payment" class="btn btn-default" rel="nofollow">
+                            Checkout
+                            <i class="fa fa-arrow-right text-success"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+@Html.Partial("modals");

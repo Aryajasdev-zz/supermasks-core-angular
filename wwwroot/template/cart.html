@@ -1,0 +1,66 @@
+<div class="slidecart animated">
+    <div class="chkout-btn">
+        <div class="row">
+            <div class="col-xs-5 text-center">
+                <u>Total</u>
+                <strong>{{ ngCart.getSubTotal() | currency:"&pound;"}}</strong>
+            </div>
+            <div class="col-xs-7 text-center"><a class="label label-info" href="checkout/pay">To Checkout</a></div>
+        </div>
+    </div>
+    <hr />
+    <div class="clearfix"></div>
+    <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+        Your cart is empty
+    </div>
+    <div ng-show="ngCart.getTotalItems() > 0">
+        <table class="table table-head">
+            <thead>
+                <tr>
+                    <th style="width:10%">Image</th>                   
+                    <th style="width:10%">Price</th>
+                    <th style="width:15%">Quantity</th>
+                    <th style="width:10%">Subtotal</th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="ngCart cart vs5" ng-repeat="item in ngCart.getCart().items track by $index">
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img class="img-responsive" ng-src="https://www.supermasks.co.uk/images/{{item.getImg()}}" alt="{{ item.getName() }}">
+                                <p>{{ item.getName() }}</p>
+                            </div>                            
+                        </div>
+                    </td>
+                    <td data-th="Price" style="width:10%">{{ item.getPrice() | currency:"&pound;"}}</td>
+                    <td data-th="Quantity" style="width:15%">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-xs" ng-class="{'disabled':item.getQuantity()==1}"
+                                        ng-click="item.setQuantity(-1, true)">
+                                    <i class="fa fa-minus fa-2x"></i>
+                                </button>
+                            </span>
+                            <input type="text" max="1000" min="1" value="{{ item.getQuantity() | number }}" class="form-control text-center">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-xs" ng-click="item.setQuantity(1, true)">
+                                    <i class="fa fa-plus fa-2x"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </td>
+                    <td data-th="Subtotal" class="text-center" style="width:10%">{{ item.getTotal() | currency:"&pound;" }}</td>
+                    <td style="width:10%" colspan="2" class="text-center">
+                        <div class="btn-group">
+                            <button ng-click="ngCart.removeItemById(item.getId())" class="btn btn-danger btn-sm" title="Remove">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>       
+</div>

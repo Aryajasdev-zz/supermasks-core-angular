@@ -1,0 +1,119 @@
+﻿@{ 
+    string Url = ViewBag.url;    
+}
+<div class="container" ng-controller="appProduct" ng-init="init('@Url')">
+    <div class="row clearfix">
+        <div class="col-md-9 col-md-push-3">
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    @Html.Partial("_nav")
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <h2 class="product-title">
+                        {{product.name}}
+                        <span class="pull-right hidden-xs">{{product.price | currency:"&pound;"}} +VAT</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="maskbox">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <div class="zoomicon">
+                                        <i class="fa fa-arrows-alt text-default fa-2x"></i>
+                                    </div>
+                                    <img class="mainimg img-zoom" ng-src="https://www.supermasks.co.uk/images/{{product.img}}" alt="{{product.name}}">
+                                </div>
+                                <div class="row vs10">
+                                    <div class="col-sm-6 col-xs-6" ng-repeat="img in extraimages">
+                                        <img ng-src="https://www.supermasks.co.uk/images/{{img}}" class="img-responsive vs5" width="100%" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="zoomcont"></div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <strong>Product Code:</strong> {{product.prodcode}}
+                                    </div>
+                                    <div class="col-sm-5 text-right">
+                                        <strong>Availability:</strong>
+                                        <span class="label label-success" ng-show="product.isstock==1">In Stock</span>
+                                        <span class="label label-danger" ng-show="product.isstock==0">Out of Stock</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 visible-xs">
+                                        <strong>Price:</strong>
+                                        {{product.price | currency:"&pound;"}} +VAT
+                                    </div>
+                                </div>
+                                <div class="row vs20">
+                                    <div class="col-sm-12">
+                                        <p>{{product.descr}}</p>
+                                    </div>                                    
+                                    <div class="col-sm-12" ng-show="product.pssdes">
+                                        <strong>Description:</strong>
+                                        <p>{{product.pssdes}}</p>
+                                    </div>
+                                    <div class="col-sm-12" ng-show="product.specification">
+                                        <strong>Specification:</strong>
+                                        <p>{{product.specification}}</p>
+                                    </div>                                    
+                                    <div class="col-sm-12" ng-show="product.delivery">
+                                        <strong>In Delivery:</strong>
+                                        <p>{{product.delivery}}</p>
+                                    </div>                                    
+                                </div>
+                                <hr />
+                                <div class="row vs20">
+                                    <div class="col-sm-5"></div>
+                                    <div class="col-sm-7 text-right">
+                                        <div class="input-group">
+                                            <ngcart-addtocart id="{{product.prodid}}" name="{{product.name}}" price="{{product.price}}" quantity="1" url="{{product.url}}" quantity-max="10" ng-click="toggle()" img="{{product.img}}" sizeid="{{product.sizeid}}" isstock="{{prduct.isstock}}">
+                                                <span ng-show="product.isstock==1">Add to Cart&nbsp;<i class="fa fa-cart-plus"></i></span>
+                                                <span ng-show="product.isstock==0">Out of Stock</span>
+                                            </ngcart-addtocart>                                                
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row vs20">
+                        <div class="col-sm-12">
+                            <h2 class="product-title">Related Products</h2>
+                            <div class="maskbox clearfix">
+                                <div class="col-md-4 col-sm-6 aniview animated fadeIn" av-animation="fadeIn" style="opacity: 1;" ng-repeat="x in relatedprods">
+                                    <div class="panel panel-default panel-product hover">
+                                        <div class="panel-heading" style="border-bottom-color: rgb(104, 0, 1); background: none;">{{x.name}}</div>
+                                        <div class="panel-body">
+                                            <div class="thumbnail_container">
+                                                <div class="thumbnail">
+                                                    <a href="{{x.url}}">
+                                                        <img ng-src="https://www.supermasks.co.uk/images/{{x.img}}" class="img-responsive img-center">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="prod-desc vs5">&nbsp;&nbsp;</div>
+                                        </div>
+                                        <div class="panel-footer clearfix" style="border-bottom-color: rgb(104, 0, 1); background: none;">
+                                            <a href="{{x.url}}" class="btn btn-default btn-block">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-pull-9">
+            @Html.Partial("_sidemenu")
+        </div>
+    </div>
+</div>

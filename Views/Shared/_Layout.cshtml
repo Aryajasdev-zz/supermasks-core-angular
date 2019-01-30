@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="superMasks">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <meta name="p:domain_verify" content="4c787a7c49ff31d8e99e0a24012f10f1" />
+    <meta name="Author" content="Party Superstores Ltd.">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="description" content="@ViewBag.metadesc" />
+    <meta name="keywords" content="@ViewBag.metakeys " />
+    <meta name="copyright" content="Copyright &copy; 2016 - 2018 Super Masks" />
+    <meta name="robots" content="ALL" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="rating" content="SAFE FOR KIDS" />
+    <meta http-equiv="cleartype" content="on" />
+    <title>@ViewData["Title"] - supermasks</title>
+    <link rel="stylesheet" href="~/css/slate.css" />
+    <link rel="stylesheet" href="~/css/screens.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Great+Vibes&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular/dirPagination.js"></script>
+    <script type="text/javascript" src="~/lib/angular/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/angular/countdownTimer.js"></script>
+    <script type="text/javascript" src="~/lib/angular/ngCart.js"></script>
+    <script type="text/javascript" src="~/lib/rxp-js-master/dist/rxp-js.min.js?version=5"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+    <script type="text/javascript" src="~/js/app.js"></script>
+</head>
+<body>
+    @Html.Partial("_header")
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @Html.Partial("_footer")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

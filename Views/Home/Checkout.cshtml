@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-xs-10" style="padding-left:0px">
+    <ngcart-checkout service="paypal" settings="{ business:'online@partysuperstores.co.uk',
+	url:'/api/GetRealRequet' }"></ngcart-checkout>
+</div>
+

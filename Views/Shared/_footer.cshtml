@@ -1,0 +1,55 @@
+﻿<hr />
+<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12 vs20">
+                    <h2 class="product-title-w">All transactions secured </h2>
+                    <ul>
+                        <li>
+                            <img src="~/images/transactions-paid.png" class="img-responsive" width="100%">
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills payments">
+                        <li><i class="fa fa-cc-visa"></i></li>
+                        <li><i class="fa fa-cc-mastercard"></i></li>
+                        <li><i class="fa fa-cc-amex"></i></li>
+                        <li><i class="fa fa-cc-paypal"></i></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-6 vs20">
+                    <h2 class="product-title-w"> Collections </h2>
+                    <ul class="list-group footer-menu" ng-controller="appCategories">                        
+                        <li class="list-group-item" ng-repeat="x in Categories"><a href="{{x.url}}">{{x.longname}}</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-6 vs20">
+                    <h2 class="product-title-w"> Site information </h2>
+                    <ul class="list-group footer-menu">
+                        <li class="list-group-item"> <a href="/about-us"> About us </a> </li>
+                        <li class="list-group-item"> <a href="/delivery-information"> Delivery Information </a> </li>
+                        <li class="list-group-item"> <a href="/terms-conditions"> Terms & conditions</a> </li>
+                        <li class="list-group-item"> <a href="/return-policy"> Returns policy</a> </li>
+                        <li class="list-group-item"> <a href="/contact-us"> Contact Us</a> </li>
+                        <li class="list-group-item"> <a href="/Orders-and-discounts"> Orders & Discounts</a> </li>
+                    </ul>
+                </div>
+                <div class="clearfix hidden-lg hidden-md"></div>
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+        <!--/.footer-->
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> Copyright &copy; Party Superstores Ltd 2018. All rights reserved. </p>
+            </div>
+        </div>
+        <!--/.footer-bottom-->
+    </div>
+</footer>
+<script src="~/js/site.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>

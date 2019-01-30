@@ -1,0 +1,28 @@
+﻿@model IEnumerable<supermasks.biz.cats>;
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img class="img-rounded img-fluid img-responsive" src="~/images/banner.png" alt="">
+        </div>
+        <div class="col-md-12">
+            <h1 class="page-header hidden-xs well" style="color:black">
+                SuperMasks - TRADE SALES. Minimum order £80 + VAT.<br /><a href="/Orders-and-discounts"> Discounts up to 20% available. Click here for details</a>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var ct in Model)
+        {        
+        <div class="col-sm-4 vs10">
+            <div class="thumbnail grow" style="height:209.125px;">
+                <a href="@ct.Url"><img src="@ct.Catimg" class="img-rounded img-fluid" /></a>
+                <div class="caption venice">
+                    <a href="@ct.Url"><h3>@ct.Name</h3></a>
+                </div>
+            </div>
+        </div>
+}
+    </div>
+</div>

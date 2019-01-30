@@ -1,0 +1,13 @@
+﻿<a href="/delivery-information" title="Delivery information" class="white">
+    <div class="feature">
+        <h4 class="text-center" style=" border-bottom: 1px solid #222;padding-bottom:10px">
+            <i class="fa fa-globe"></i>  WORLDWIDE <strong>DELIVERY</strong>
+        </h4>
+        <div ng-controller="todaysdateController">
+            <h6>Time left for next day delivery</h6>
+            <span class="text-center">                
+                <span countdown end-date="{{ today | date }} 15:00:00" units="hours|minutes|seconds"></span>
+            </span>            
+        </div>
+    </div>
+</a>

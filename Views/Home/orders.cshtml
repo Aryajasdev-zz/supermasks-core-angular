@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}<div class="shop-items">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a> <span class="divider"></span></li>
+                    <li class="active">Orders</li>
+                </ul>
+                <!-- new layout for sub categories-->
+                <div class="row subcat alert-info" ng-controller="loginController" ng-init="getOrders()">
+                    <div class="col-sm-12">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr class="info">
+                                    <th>#</th>
+                                    <th>Order No</th>
+                                    <th>Amount</th>
+                                    <th>Vat</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in orders">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{x.orderid}}</td>
+                                    <td>{{x.amount | currency:"&pound;"}}</td>
+                                    <td>{{x.vat | currency:"&pound;"}}</td>
+                                    <td>{{x.entrydate}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-md-pull-9 col-sm-pull-8">
+                @Html.Partial("_sidemenu")
+            </div>
+        </div>
+        <div class="sep-bor"></div>
+    </div>
+</div>
+

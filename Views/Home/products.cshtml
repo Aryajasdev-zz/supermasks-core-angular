@@ -1,0 +1,95 @@
+﻿@model IEnumerable<supermasks.Models.ProductMaster>
+@{ 
+    string Url = ViewBag.url;
+}
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-header hidden-xs well" style="color:black">
+                SuperMasks - TRADE SALES. Minimum order £80 + VAT. <a href="/Orders-and-discounts">Discounts up to 20% available. Click here for details</a>
+            </h4>
+        </div>
+    </div>
+</div>
+<div class="container" ng-controller="appProducts" ng-init="init('@Url')">
+    <div class="row clearfix">
+        <div class="col-md-9 col-md-push-3">
+            <div class="row hidden-xs">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><a href="/">Home</a> <span class="divider"></span></li>
+                        <li class="active">@Url</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label for="search">Search:</label>
+                        <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                    </div>
+                    <div class="col-xs-4">
+                        <label for="search">Sort</label>
+                        <select ng-model="sortColumn" class="form-control" ng-options="item.name for item in pSort"></select>
+                    </div>
+                    <div class="col-xs-4">
+                        <label for="search">Per Page</label>
+                        <select ng-model="pageSize" class="form-control" ng-options="item.name for item in pSizes"></select>
+                    </div>
+                </div>                
+            </div>
+            <div class="row vs10">
+                <div class="col-md-12">
+                    <dir-pagination-controls boundary-links="true" template-url="/pages/pagination.html"></dir-pagination-controls>
+                </div>                
+            </div>
+            <div class="col-md-12 product-panels vs20">
+                <div class="maskbox">
+                    <div class="row clearfix">
+                        <div class="col-md-4" ng-show="products" dir-paginate="x in products | filter:q | itemsPerPage: pageSize.value | orderBy:sortColumn.value">
+                            <div class="panel panel-default panel-product hover">
+                                <div class="panel-heading">{{x.name}}</div>
+                                <div class="panel-body">
+                                    <div class="thumbnail_container">
+                                        <div class="thumbnail">
+                                            <a href="{{x.url}}"><img ng-src="https://www.supermasks.co.uk/images/{{x.img}}" class="img-responsive img-center" data-toggle="tooltip" data-placement="top" title="Click to view details" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="prod-desc vs5">{{x.descr}}</div>
+                                </div>
+                                <div class="panel-footer clearfix">
+                                    <div class="pull-right">
+                                        <div class="btn-group" role="group" aria-label="Venetian Product">
+                                            <a href="{{x.url}}" class="btn btn-link white" title="View details">Details</a>
+                                            <ngcart-addtocart id="{{x.prodid}}" name="{{x.name}}" price="{{x.webprice}}"                  quantity="1" url="{{x.url}}" ng-click="toggle()" img="{{x.img}}" sizeid="{{x.sizeid}}" isstock="{{x.isstock}}">
+                                                <span ng-show="x.isstock==1">Add to Cart&nbsp;<i class="fa fa-cart-plus"></i></span>
+                                                <span ng-show="x.isstock==0">Out of Stock</span>
+                                            </ngcart-addtocart>                                            
+                                        </div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="pricebox">{{x.price | currency:"&pound;"}} +VAT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="!products">
+                            <center><b>No Products found for this Colour</b></center>
+                        </div>
+                    </div>
+                </div> <!-- row clearfix -->
+            </div>
+            <dir-pagination-controls boundary-links="true" template-url="/pages/pagination.html"></dir-pagination-controls>
+            <div class="row vs20">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-pull-9">
+            @Html.Partial("_sidemenu")
+        </div>
+    </div>
+</div>
+<br /><br /><br />

@@ -1,0 +1,195 @@
+﻿@{
+    ViewData["Title"] = "account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shop-items">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8 col-md-push-3 col-sm-push-4">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a> <span class="divider"></span></li>
+                    <li class="active">Account</li>
+                </ul>
+                <!-- new layout for sub categories-->
+                <div class="row subcat" ng-controller="loginController" ng-init="getAccount()">
+                    <div class="col-sm-12">
+                        <div class="mainbox">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="panel-title">Customer Account Details</div>
+                                </div>
+                                <div class="panel-body">
+                                    <form name="customerform" class="form-horizontal" role="form" method="post">
+                                        <div id="signupalert" style="display:none" class="alert alert-danger">
+                                            <p>Error:</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="custid" class="col-md-3 control-label">Account ID</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" readonly name="custid" ng-model="customer.custid" placeholder="Account ID">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="col-md-3 control-label">Email</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="email" ng-model="customer.email" placeholder="Email Address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company" class="col-md-3 control-label">Company</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="company" ng-model="customer.cname" placeholder="Company">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title" class="col-md-3 control-label">Title</label>
+                                            <div class="col-md-9">
+                                                <select ng-model="customer.title" name="ctitle" class="form-control">
+                                                    <option ng-repeat="x in Titles" value="{{x}}">{{x}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstname" class="col-md-3 control-label">First Name</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="firstname" ng-model="customer.cfname" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="lastname" ng-model="customer.clname" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                        <hr class="separator">
+                                        <center><div class="panel-title"><b>Billing Address</b></div></center>
+                                        <hr class="separator">
+                                        <div class="form-group">
+                                            <label for="hno" class="col-md-3 control-label">House/Flat No</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="hno" ng-model="customer.hno" placeholder="House/Flat No">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="street" class="col-md-3 control-label">Street</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="street" ng-model="customer.street" placeholder="Street">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="town" class="col-md-3 control-label">Town</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="town" ng-model="customer.town" placeholder="Town">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pcode" class="col-md-3 control-label">Post Code</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="pcode" ng-model="customer.pcode" placeholder="Post Code">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="county" class="col-md-3 control-label">County</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="county" ng-model="customer.county" placeholder="County">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="country" class="col-md-3 control-label">Country</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="country" ng-model="customer.country" placeholder="Country">
+                                            </div>
+                                        </div>
+                                        <hr class="separator">
+                                        <center>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="delchk" name="delchk" toggle-int toggle-model="customer.isdel" > Different Delivery Address
+                                                <input type="hidden" ng-model="customer.isdel" id="isdel" name="isdel" />
+                                            </label>
+                                        </center>
+                                        <div id="deliveryadd" style="">
+                                            <hr class="separator">
+                                            <center><div class="panel-title"><b>Delivery Address</b></div></center>
+                                            <hr class="separator">
+                                            <div class="form-group">
+                                                <label for="dhno" class="col-md-3 control-label">House/Flat No</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="dhno" ng-model="customer.dhno" placeholder="House/Flat No">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dstreet" class="col-md-3 control-label">Street</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="dstreet" ng-model="customer.dstreet" placeholder="Street">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dtown" class="col-md-3 control-label">Town</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="dtown" ng-model="customer.dtown" placeholder="Town">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dpcode" class="col-md-3 control-label">Post Code</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="dpcode" ng-model="customer.dpcode" placeholder="Post Code">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dcounty" class="col-md-3 control-label">County</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="dcounty" ng-model="customer.dcounty" placeholder="County">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dcountry" class="col-md-3 control-label">Country</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="dcountry" ng-model="customer.country" placeholder="Country">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="separator">
+                                        <div class="form-group">
+                                            <label for="phone" class="col-md-3 control-label">Phone No</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="phone" ng-model="customer.phone" placeholder="Phone No">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fax" class="col-md-3 control-label">Fax No</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="fax" ng-model="customer.fax" placeholder="Fax No">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="vat" class="col-md-3 control-label">Vat No</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="vat" ng-model="customer.vat" placeholder="vat">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Discount" class="col-md-3 control-label">Discount</label>
+                                            <div class="col-md-9">
+                                                <input type="text" readonly class="form-control" name="discount" ng-model="customer.discount" placeholder="vat">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button id="btn-signup" type="button" onclick="updatecust(); return false;" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Update Customer Details</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-md-pull-9 col-sm-pull-8">
+                @Html.Partial("_sidemenu")
+            </div>
+        </div>
+        <div class="sep-bor"></div>
+    </div>
+</div>
